@@ -1,0 +1,23 @@
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+
+# Set up Firefox options (e.g., headless mode)
+firefox_options = Options()
+
+# Define the remote WebDriver URL (Selenium Grid Hub)
+grid_url = "http://192.168.0.1:4444/wd/hub"  # Replace <GRID_HUB_IP> with your Grid's IP or hostname
+
+# Initialize the remote WebDriver with Firefox options
+driver = webdriver.Remote(
+    command_executor=grid_url,
+    options=firefox_options
+)
+
+# Open a webpage
+driver.get("https://www.google.com")
+
+# Print the page title
+print(driver.title)
+
+# Close the browser session
+driver.quit()
